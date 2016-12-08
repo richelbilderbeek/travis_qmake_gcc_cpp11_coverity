@@ -1,7 +1,6 @@
 sudo: require
 language: cpp
 compiler: gcc
-dist: trusty # Qt5, from https://gist.github.com/jreese/6207161#gistcomment-1462109
 
 before_install:
   # C++11
@@ -17,22 +16,3 @@ script:
   - make
   - ./travis_qmake_gcc_cpp11_coverity
 
-
-env:
-  global:
-   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
-   #   via the "travis encrypt" command using the project repo's public key
-   - secure: "gCoqtWXAXoUr1051zr+gPRmwffbLbkqPPmK6274ReIqRJ2SNd/ThhuaPAL1DnHJErHVBcMWBPcz1DI2IqTdPWYq8HIq5re9Z+o/xtxXf665EcatEDjI7hVvWk2snaIK59R1hNI64gO0M/fnppifxOTGBt8C0AGHdLcO5QaW1s94veKs0nTloX/6eJ8q8wAo/mEmJ25XcxD37Wer2QiAyJqZyU4uWQNXwTFDfvJ/gUoKMABObA00EOsVbV9QK+tvA4xEkNODxfTMdh/HfVlSXMF2pOUnOMHe8MY/jyDOaySRyMP7V1HbDHNPDEHoAEEWiGptNsfGFu4ZejwX4bDdrRtmxGXUR8e7SjtUnInyYeNlZIcIfLH6ls6T/skw3vm3KHYt8faWRk84iarW2jwUvzDakygPUXBxeyMxQ9M0MMQK06yz0SUWConGMtBLmmxhrndd7YxTZca92rtcUOTFjS0T0xFCWC/Ltn4lFVoFBLZ88Tu7y9cPCOg9z1oaFFJ4x5r48Nlm09picl8vnB3+cXY+A9vzCAlgdJjETmdHb41JNsk7dnOtlY5iVqivRHRGNDc+qX/3ipfWT0f8BaJ87KnuzJv29m2fJJXpkm+Ee3gKJXnECKkf3XqIGiyV92jFpRKgqS2dT52N0lMnXyeQ3N6/ThrH05lMxTzdI88rjHTU="
-
-before_install:
-      - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
-
-addons:
-  coverity_scan:
-    project:
-      name: "richelbilderbeek/travis_qmake_gcc_cpp11_coverity"
-      description: "Testing project"
-    notification_email: richel@richelbilderbeek.nl
-    build_command_prepend: "qmake"
-    build_command: "make"
-    branch_pattern: coverity_scan

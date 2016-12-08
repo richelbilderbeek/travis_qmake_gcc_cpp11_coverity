@@ -16,3 +16,21 @@ script:
   - make
   - ./travis_qmake_gcc_cpp11_coverity
 
+env:
+  global:
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+   #   via the "travis encrypt" command using the project repo's public key
+   - secure: "GRHmJNKQ2EJvrvY1LPlzFA0wGh21yPI8Ec2GeWRqMk3HTd0ZWmCIkDHE3SUfYNl4YxsvXs6HtnPVkI7mh15M1T4gZh9BNtjWQ/LxTeiYXWcPlRD4kYN2qHwS74m1PuTESUL85nA/Z7nNsuV5eay6haG3xw+IKh2xQfj2hafwFvDWCEZhHdQ1etaQk5QAS8w1ArDuTjyBMCx5n+DcT32y0brQatSqC+8O6lqWEYDY9+FmOlTEV/PecX2nD96Jsf3nLj4Xz5gBvzFTqJ7hhzedx79Ycxkjd4Lr0Y4I/ftfjgNo9kolaxQzdhdzhaGQ47D5hYv9HVwpqL2XOQHW1I0xxBhFjKyd1hHzKq3oy09DXndQNU2+EcUrXbjTGTMKsNmYzPoKQJ+5uE7bIIj2/VviON2grlTwFxvgOGLsLDikOsKyMr4rMOwQcZIN3wgMCSY8R3AlxSU0BEpJ8j1VXSGb+0MiKCmnB2zzpqvrnLkGRQaDHLTRdvJnSFKPKrI2k+lzX67am3Ko+PqaGTCcZ0dUjlvcjPBz/DwzIuoPPnqaTaC5GmVFUyWqXLpmjwPrRoZP14axW7ZOej5cRrjCCOlLbwFTPhJF83dWX093W5HUJJyXfOkDHbFe4F5J7QnUT9bOhRC6WC7K9KmdQBjvXRi8OKHvyHIVU+QKUifcR21JN4E="
+
+before_install:
+      - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
+
+addons:
+  coverity_scan:
+    project:
+      name: "richelbilderbeek/travis_qmake_gcc_cpp11_coverity"
+      description: "Build submitted via Travis CI"
+    notification_email: richel@richelbilderbeek.nl
+    build_command_prepend: "qmake"
+    build_command:   "make"
+    branch_pattern: coverity_scan

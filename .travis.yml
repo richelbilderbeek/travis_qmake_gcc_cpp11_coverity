@@ -7,7 +7,9 @@ before_install:
   - sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test
   - sudo apt-get update -qq
 
-install: sudo apt-get install -qq g++-5
+install: 
+  # C++11
+  - sudo apt-get install -qq g++-5
 
 script: 
   - qmake
@@ -31,5 +33,5 @@ addons:
       description: "Testing project"
     notification_email: richel@richelbilderbeek.nl
     build_command_prepend: "qmake"
-    build_command:   "make"
+    build_command: "make"
     branch_pattern: coverity_scan

@@ -13,7 +13,7 @@ install:
   # C++11
   - sudo apt-get install -qq g++-5
   # Coverity Scan
-  - cov-configure --comptype gcc --compiler /usr/bin/g++-5
+  - cov-configure --comptype gcc --compiler /usr/bin/g++-5.1.0
 
 script: 
   - qmake

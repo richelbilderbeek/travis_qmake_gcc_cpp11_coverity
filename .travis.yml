@@ -12,6 +12,8 @@ before_install:
 install: 
   # C++11
   - sudo apt-get install -qq g++-5
+  # Coverity Scan
+  - ./cov-configure --comptype gcc --compiler /usr/bin/g++-5
 
 script: 
   - qmake
@@ -34,3 +36,4 @@ addons:
     build_command_prepend: "qmake"
     build_command:   "make"
     branch_pattern: coverity_scan
+

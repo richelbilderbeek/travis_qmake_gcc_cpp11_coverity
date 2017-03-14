@@ -1,8 +1,14 @@
 # travis_qmake_gcc_cpp11_coverity
 
-[![Travis CI logo](TravisCI.png)](https://travis-ci.org)
+Branch|[![Travis CI logo](TravisCI.png)](https://travis-ci.org)
+---|---
+master|[![Build Status](https://travis-ci.org/richelbilderbeek/travis_qmake_gcc_cpp11_coverity.svg?branch=master)](https://travis-ci.org/richelbilderbeek/travis_qmake_gcc_cpp11_coverity)
+coverity_scan|[![Build Status](https://travis-ci.org/richelbilderbeek/travis_qmake_gcc_cpp11_coverity.svg?branch=coverity_scan)](https://travis-ci.org/richelbilderbeek/travis_qmake_gcc_cpp11_coverity)
 
-[![Build Status](https://travis-ci.org/richelbilderbeek/travis_qmake_gcc_cpp11_coverity.svg?branch=master)](https://travis-ci.org/richelbilderbeek/travis_qmake_gcc_cpp11_coverity)
+<a href="https://scan.coverity.com/projects/richelbilderbeek-travis_qmake_gcc_cpp11_coverity">
+  <img alt="Coverity Scan Build Status"
+       src="https://scan.coverity.com/projects/12045/badge.svg"/>
+</a>
 
 This GitHub is part of [the Travis C++ Tutorial](https://github.com/richelbilderbeek/travis_cpp_tutorial).
 
